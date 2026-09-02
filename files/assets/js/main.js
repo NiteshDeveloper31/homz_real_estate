@@ -3,16 +3,14 @@
   $(document).ready(function(){
   
   //========== HEADER ACTIVE STRATS ============= //
-  if ($("#header").length > 0) {
   $(window).on("scroll", function (event) {
     var scroll = $(window).scrollTop();
     if (scroll < 1) {
-    $(".header-area").removeClass("sticky");
+      $(".header-area, .mobile-header").removeClass("sticky");
     } else {
-    $(".header-area").addClass("sticky");
+      $(".header-area, .mobile-header").addClass("sticky");
     }
-    });
-  }
+  });
   //========== HEADER ACTIVE ENDS ============= //
   
   //========== SIDEBAR/SEARCH AREA ============= //

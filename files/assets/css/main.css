@@ -2356,6 +2356,13 @@ Location:
   left: 0;
   top: 180px;
 }
+@media (max-width: 767px) {
+  .hero1-section-area .header-main-content .star1,
+  .hero1-section-area .header-main-content .star2,
+  .hero1-section-area .header-pera .star3 {
+    display: none !important;
+  }
+}
 .hero1-section-area .header-main-content h1 {
   text-align: center;
 }

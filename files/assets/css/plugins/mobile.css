@@ -42,8 +42,16 @@ ul, li{
     font-weight: 400;
     color: #161616;
     text-decoration: none;
+    display: inline-block;
 }
 
+.mobile-logo img,
+.mobile-sidebar .logos img {
+    max-height: 38px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
 
 .mobile-header {
     position: absolute;
@@ -52,7 +60,18 @@ ul, li{
     width: 100%;
     padding: 17px 0;
     z-index: 9;
-    
+    transition: all 0.3s ease;
+}
+
+.mobile-header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #FAF8F5;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 12px 0;
+    z-index: 999;
 }
 
 .mobile-header-elements {
@@ -63,7 +82,7 @@ ul, li{
 
 .mobile-nav-icon {
     font-size: 23px;
-    border: 1px solid;
+    border: 1px solid #161616;
     width: 40px;
     height: 40px;
     display: flex;
@@ -71,37 +90,33 @@ ul, li{
     justify-content: center;
     border-radius: 4px;
     color: #161616;
+    cursor: pointer;
 }
-
-
 
 .mobile-sidebar {
     position: fixed;
     height: 100%;
     width: 100%;
     background:#F6F6EC;
-    z-index: 99;
+    z-index: 999;
     padding: 40px 30px;
     left: -100%;
     top: 0;
     visibility: hidden;
     opacity: 0;
     transition: all .3s;
-    
-    
 }
 
 .mobile-sidebar .contact-icon{
     background: #161616;
 }
 
-
 .mobile-sidebar.mobile-menu-active{
     left: 0;
     visibility: visible;
     opacity: 1;
     transition: all .3s;
-    overflow-y:scroll ;
+    overflow-y: auto;
 }
 
 .menu-close {
@@ -120,14 +135,14 @@ ul, li{
     padding: 10px 0;
     display: block;
     font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
-
 
 ul.mobile-nav-list {
     margin-top: 30px;
+    max-height: none;
+    overflow: visible;
 }
-
 
 li.has-children {
     position: relative;
@@ -159,8 +174,6 @@ ul.mobile-menu-sub.sub-menu-active{
     transition: all .3s;
 }
 
-
-
 .mobile-nav li {
     position: relative;
     z-index: 2;
@@ -168,30 +181,32 @@ ul.mobile-menu-sub.sub-menu-active{
 
 span.submenu-button {
     position: absolute;
-    width: 100%;
+    width: 44px;
     height: 44px;
     top: 0;
-    left: 0;
+    right: 0;
+    left: auto;
     z-index: 3;
+    cursor: pointer;
     transition: all .3s;
 }
 
 span.submenu-button:after, span.submenu-button:before {
     position: absolute;
     content: "";
-    height: 20px;
+    height: 14px;
     width: 2px;
     background: #161616;
-    top: 12px;
-    right: 9px;
+    top: 15px;
+    right: 21px;
     transition: all .3s;
 }
 
 span.submenu-button:before {
     height: 2px;
-    width: 20px;
-    right: 0px;
-    top: 22px;
+    width: 14px;
+    right: 15px;
+    top: 21px;
 }
 
 span.submenu-button.submenu-opened:after {
@@ -199,11 +214,19 @@ span.submenu-button.submenu-opened:after {
     opacity: 0;
 }
 
-.sub-menu{
+.sub-menu {
     display: none;
     padding-left: 15px;
+    border-left: 2px solid rgba(0, 0, 0, 0.08);
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
+.sub-menu li a {
+    font-size: 16px;
+    padding: 6px 0;
+    color: #444;
+}
 
 span.multi-drop-icon {
     position: absolute;
@@ -217,8 +240,128 @@ span.multi-drop-icon {
     justify-content: flex-end;
 }
 
+/* Mobile Sidebar Footer & Contact Info Styling */
+.mobile-sidebar a,
+.mobile-sidebar a:visited {
+    color: #161616 !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+}
 
-ul.mobile-nav-list {
-    max-height: 500px;
-    overflow-y: scroll;
+.mobile-sidebar a:hover,
+.mobile-sidebar a:focus {
+    color: #1A4C54 !important;
+    text-decoration: none !important;
+}
+
+.allmobilesection {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.allmobilesection .header-btn1 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #1A4C54;
+    color: #ffffff !important;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none !important;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(26, 76, 84, 0.15);
+}
+
+.allmobilesection .header-btn1:hover {
+    background: #11363c;
+    color: #ffffff !important;
+}
+
+.allmobilesection h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #161616;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+.contact-info-single {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.contact-info-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(26, 76, 84, 0.1);
+    color: #1A4C54;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.contact-info-text {
+    flex-grow: 1;
+}
+
+.contact-info-text a {
+    color: #161616 !important;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+    display: inline-block;
+    word-break: break-word;
+}
+
+.contact-info-text a:hover {
+    color: #1A4C54 !important;
+}
+
+/* Social Links Layout Fix */
+.social-links-mobile-menu ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    padding: 0 !important;
+    margin-top: 10px !important;
+    list-style: none !important;
+}
+
+.social-links-mobile-menu ul li {
+    margin: 0 !important;
+}
+
+.social-links-mobile-menu ul li a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: #161616 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    font-size: 15px;
+    transition: all 0.3s ease !important;
+}
+
+.social-links-mobile-menu ul li a:hover {
+    background: #1A4C54 !important;
+    color: #ffffff !important;
+    border-color: #1A4C54 !important;
+    transform: translateY(-2px);
 }
